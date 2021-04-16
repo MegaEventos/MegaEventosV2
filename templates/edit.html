@@ -1,0 +1,154 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords"
+        content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Nice lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Nice admin lite design, Nice admin lite dashboard bootstrap 5 dashboard template">
+    <meta name="description"
+        content="Nice Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
+    <meta name="robots" content="noindex,nofollow">
+    <title>Edit</title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="">
+    <!-- Custom CSS -->
+    <link href="{% static 'dist/css/style.min.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Preloader - style you can find in spinners.css -->
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <div id="main-wrapper" data-navbarbg="skin6" data-theme="light" data-layout="vertical" data-sidebartype="full" data-boxed-layout="full">
+
+        <!-- Page wrapper  -->
+        <div class="page-wrapper">
+    
+            <!-- Bread crumb and right sidebar toggle -->
+            <div class="page-breadcrumb">
+                <div class="row">
+                    <div class="col-5 align-self-center">
+                        <!-- <h4 class="page-title">Editar informacion del Cliente</h4> -->
+                    </div>
+                    <div class="col-7 align-self-center">
+                        <div class="d-flex align-items-center justify-content-end">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item">
+                                        <a href="{% url 'home' %}">Home</a>
+                                    </li>
+                                    <li class="breadcrumb-item active" aria-current="page">Profile</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Container fluid  -->
+    
+            <div class="container-fluid">
+                <!-- Start Page Content -->
+                <div class="row">
+
+                    <div class="col-lg-2 col-xlg-3"></div>
+
+                    <div class="col-lg-8 col-xlg-9">
+                        <div class="card">
+                            <div class="card-body">
+
+                                <form method="POST" class="row g-3">
+                                    {% csrf_token %}
+                                    <div class="text-center mb-5 mt-4">
+                                        <h3 class="page-title">Editar informacion del Cliente</h3>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label class="form-label">Nombre</label>
+                                        <input class="form-control form-control-line" type="text" name="nombreCliente" value="{{instancia.nombreCliente}}" maxlength="100" required="" id="id_nombreCliente">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Nombre Homenajead@</label>
+                                        <input class="form-control form-control-line" type="text" name="nombreHomenajeado" value="{{instancia.nombreHomenajeado}}" maxlength="100" required="" id="id_nombreHomenajeado">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Celular</label>
+                                        <input class="form-control form-control-line" type="text" name="celular" value="{{instancia.celular}}" maxlength="20" required="" id="id_celular">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Barrio / Sector</label>
+                                        <input class="form-control form-control-line" type="text" name="barrioSector" value="{{instancia.barrioSector}}" maxlength="200" required="" id="id_barrioSector">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Dirección</label>
+                                        <input class="form-control form-control-line" type="text" name="direccion" value="{{instancia.direccion}}" maxlength="200" required="" id="id_direccion">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Fecha Evento</label>
+                                        <input class="form-control form-control-line" type="text" name="fechaEvento" value="{{instancia.fechaEvento}}" maxlength="20" required="" id="id_fechaEvento">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Hora Inicio</label>
+                                        <input class="form-control form-control-line" type="text" name="horaInicio" value="{{instancia.horaInicio}}" maxlength="20" required="" id="id_horaInicio">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Paquete</label>
+                                        <input class="form-control form-control-line" type="text" name="numeroPaquete" value="{{instancia.numeroPaquete}}" maxlength="10" required="" id="id_numeroPaquete">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Niños</label>
+                                        <input class="form-control form-control-line" type="text" name="cantidadNinos" value="{{instancia.cantidadNinos}}" maxlength="100" required="" id="id_cantidadNinos">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Edades</label>
+                                        <input class="form-control" type="text" name="rangoEdad" value="{{instancia.rangoEdad}}" maxlength="100" required="" id="id_rangoEdad">
+                                    </div>
+
+                                    <div class="d-flex justify-content-center mt-5">
+                                        <button style="margin-right: 3em;" class="btn btn-primary mr-3" type="submit">Editar</button>
+                                        <a class="btn btn-secondary" href="{% url 'home' %}" type="button">Volver</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End PAge Content -->
+            </div>
+    
+            <!-- End Container fluid  -->
+    
+            <!-- footer -->
+            <footer class="footer text-center">
+                All Rights Reserved Mega Eventos Vip. Developed by
+                <a href="https://www.wrappixel.com">Mateo</a>.
+            </footer>
+            <!-- End footer -->
+        </div>
+        <!-- End Page wrapper  -->
+    </div>
+
+    <!-- All Jquery -->
+    <script src="{% static 'assets/libs/jquery/dist/jquery.min.js' %}"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="{% static 'assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="{% static 'assets/extra-libs/sparkline/sparkline.js' %}"></script>
+    <!--Wave Effects -->
+    <script src="{% static 'dist/js/waves.js' %}"></script>
+    <!--Menu sidebar -->
+    <script src="{% static 'dist/js/sidebarmenu.js' %}"></script>
+    <!--Custom JavaScript -->
+    <script src="{% static 'dist/js/custom.min.js' %}"></script>
+</body>
+
+</html>

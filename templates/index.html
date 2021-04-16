@@ -1,0 +1,236 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords"
+        content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Nice lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Nice admin lite design, Nice admin lite dashboard bootstrap 5 dashboard template">
+    <meta name="description"
+        content="Nice Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
+    <meta name="robots" content="noindex,nofollow">
+    <title>Panel de Administración</title>
+    <!-- Custom CSS -->
+    <link href="{% static 'assets/libs/chartist/dist/chartist.min.css' %}" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{% static 'dist/css/style.min.css' %}" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/62c368450b.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- Preloader - style you can find in spinners.css -->
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <div id="main-wrapper" data-navbarbg="skin6" data-theme="light" data-layout="vertical" data-sidebartype="full"
+        data-boxed-layout="full">
+
+        <!-- Topbar header - style you can find in pages.scss -->
+        <header class="topbar" data-navbarbg="skin6">
+            <nav class="navbar top-navbar navbar-expand-md navbar-light">
+                <div class="navbar-header" data-logobg="skin5">
+                    <!-- This is for the sidebar toggle which is visible on mobile only -->
+                    <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)">
+                        <i class="ti-menu ti-close"></i>
+                    </a>
+                </div>
+
+                <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin6">
+
+                    <!-- toggle and nav items -->
+                    <ul class="navbar-nav float-start me-auto">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'home' %}">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-home"></i>
+                                    <div class="ms-1 d-none d-sm-block">
+                                        <span>Home</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'reciclaje' %}">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-recycle"></i>
+                                    <div class="ms-1 d-none d-sm-block">
+                                        <span>Reciclaje</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="nav-item search-box">
+                            <a class="nav-link waves-effect waves-dark" href="javascript:void(0)">
+                                <div class="d-flex align-items-center">
+                                    <i class="mdi mdi-magnify font-20 me-1"></i>
+                                    <div class="ms-1 d-none d-sm-block">
+                                        <span>Buscar</span>
+                                    </div>
+                                </div>
+                            </a>
+                            <form class="app-search position-absolute" style="display: none;">
+                                <input type="text" class="form-control" placeholder="Ingrese lo que quiere buscar">
+                                <a class="srh-btn">
+                                    <i class="ti-close"></i>
+                                </a>
+                            </form>
+                        </li>
+
+                    </ul>
+
+                    <ul class="navbar-nav float-end me-2">
+                        <h3>{{user.username}}</h3>
+                    </ul>
+
+                    <!-- Right side toggle and nav items -->
+                    <ul class="navbar-nav float-end">
+
+                        <!-- User profile and search -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="{% static 'images/Logo.jpeg' %}" alt="user" class="rounded-circle" width="31">
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="javascript:void(0)"><i class="far fa-user"></i> Mi perfil</a>
+                                <a class="dropdown-item" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Salir</a>
+                            </ul>
+                        </li>
+                        <!-- User profile and search -->
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- End Topbar header -->
+
+        <!-- Page wrapper  -->
+        <div class="page-wrapper">
+
+            <!-- Bread crumb and right sidebar toggle -->
+            {%block contenttitle %}
+            <div class="page-breadcrumb">
+                <div class="row">
+                    <div class="col-5 align-self-center">
+                        <h4 class="page-title">Tablero</h4>
+                    </div>
+                    <div class="col-7 align-self-center">
+                        <div class="d-flex align-items-center justify-content-end">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item">
+                                        <a href="#">Home</a>
+                                    </li>
+                                    <li class="breadcrumb-item active" aria-current="page">Tablero</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {%endblock contenttitle%}
+
+            <!-- End Bread crumb and right sidebar toggle -->
+
+            <!-- Container fluid  -->
+            {%block content %}
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Lista de los clientes</h4>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Nombre</th>
+                                            <th scope="col">Nombre Homenajead@</th>
+                                            <th scope="col">Celular</th>
+                                            <th scope="col">Barrio / Sector</th>
+                                            <th scope="col">Dirección</th>
+                                            <th scope="col">Fecha Evento</th>
+                                            <th scope="col">Hora Inicio</th>
+                                            <th scope="col">Paquete</th>
+                                            <th scope="col">Niños</th>
+                                            <th scope="col">Edades</th>
+                                            <th scope="col">Editar</th>
+                                            <th scope="col">Descartar</th>
+                                            <th scope="col">PDF</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for client in clients %}
+                                            {% if client.Recycle is False %}
+                                                <tr class="table-info">
+                                                    <td>{{client.id}}</td>
+                                                    <td>{{client.nombreCliente}}</td>
+                                                    <td>{{client.nombreHomenajeado}}</td>
+                                                    <td>{{client.celular}}</td>
+                                                    <td>{{client.barrioSector}}</td>
+                                                    <td>{{client.direccion}}</td>
+                                                    <td>{{client.fechaEvento}}</td>
+                                                    <td>{{client.horaInicio}}</td>
+                                                    <td>{{client.numeroPaquete}}</td>
+                                                    <td>{{client.cantidadNinos}}</td>
+                                                    <td>{{client.rangoEdad}}</td>
+                                                    <td><a href="/oficina/editar/{{ client.id }}"><button class="btn btn-warning text-white"><i class="fas fa-edit"></i></button></a></td>
+                                                    <td><a href="/oficina/eliminar/{{ client.id }}" onClick="return confirm('¿Seguro que quieres borrar a {{client.nombreCliente}}?');" ><button class="btn btn-danger text-white"><i class="fas fa-trash-alt"></i></button></a></td>
+                                                    <td><a href="/oficina/pdf/{{ client.id }}" target="_blank"><button class="btn btn-secondary text-white"><i class="fas fa-file-pdf"></i></button></a></td>
+                                                </tr>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {%endblock%}
+            
+            <!-- End Container fluid  -->
+
+            <!-- footer -->
+            <footer class="footer text-center">
+                All Rights Reserved Mega Eventos Vip. Developed by
+                <a href="https://www.google.com">Mateo</a>.
+            </footer>
+            <!-- End footer -->
+
+        </div>
+        <!-- End Page wrapper  -->
+    </div>
+    <!-- End Wrapper -->
+
+    <!-- All Jquery -->
+    <script src="{% static 'assets/libs/jquery/dist/jquery.min.js' %}"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="{% static 'assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="{% static 'assets/extra-libs/sparkline/sparkline.js' %}"></script>
+    <!--Wave Effects -->
+    <script src="{% static 'dist/js/waves.js' %}"></script>
+    <!--Menu sidebar -->
+    <script src="{% static 'dist/js/sidebarmenu.js' %}"></script>
+    <!--Custom JavaScript -->
+    <script src="{% static 'dist/js/custom.min.js' %}"></script>
+    <!--This page JavaScript -->
+    <!--chartis chart-->
+    <script src="{% static 'assets/libs/chartist/dist/chartist.min.js' %}"></script>
+    <script src="{% static 'assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js' %}"></script>
+    <script src="{% static 'dist/js/pages/dashboards/dashboard1.js' %}"></script>
+</body>
+
+</html>

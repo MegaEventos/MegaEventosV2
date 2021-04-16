@@ -1,0 +1,149 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    h1{
+        line-height: normal;
+        text-transform: uppercase;
+        font-size: 16px;
+    }
+
+    span{
+        font-weight: normal;
+    }
+    .tablecustom {
+        width: 100%;
+    }
+
+    .tablecustom td {
+        text-align: left;
+        border: 1px solid #000;
+        border-collapse: collapse;
+        margin: 1em;
+    }
+
+    img{
+        height: 200px;
+    }
+      
+
+  </style>
+
+</head>
+<body>
+
+    <table>
+        <tr>
+            <td>
+                <img src="{% static 'images/logopdf.jpeg' %}" alt="">
+            </td>
+            <td>
+                <h1>CÓDIGO DE LA ORDEN: {{clients.id}}</h1>
+                <h1>HORARIO DEL EVENTO: {{clients.horaInicio}}</h1>
+                <h1>RECREADORES: </h1>
+            </td>
+        </tr>
+    </table>
+
+    <br><br><br><br>
+
+    <table class="tablecustom">
+        <tr>
+            <td>
+                <h1 style="padding-top: 10px;">NOMBRE DEL CLIENTE: <span>{{clients.nombreCliente}}</span></h1>
+                <h1>TEL: <span>{{clients.celular}}</span></h1>
+                <h1>BARRIO / SECTOR: <span>{{clients.barrioSector}}</span></h1>
+                <h1>FECHA DEL EVENTO: <span>{{clients.fechaEvento}}</span></h1>
+                <h1 style="padding-bottom: 10px;">NIÑOS: <span>{{clients.cantidadNinos}}</span></h1>
+                
+            </td>
+            <td>
+                <h1 style="padding-top: 10px;">NOMBRE HOMENAJEAD@: <span>{{clients.nombreHomenajeado}}</span></h1>
+                <h1>PAQUETE: <span>{{clients.numeroPaquete}}</span></h1>
+                <h1>DIRECCIÓN: <span>{{clients.direccion}}</span></h1>
+                <h1>HORA DE INICIO: <span>{{clients.horaInicio}}</span></h1>
+                <h1 style="padding-bottom: 10px;">EDADES: <span>{{clients.rangoEdad}}</span></h1>
+            </td>
+        </tr>
+    </table>
+
+    <br><br><br>
+
+    <table class="tablecustom">
+        <tr>
+            {% for paquete in paquetes %}
+                {% if paquete.numeroPaquete == clients.numeroPaquete %}
+                    <td>
+                        <h1 style="padding-bottom: 10px; padding-top: 10px;" style="padding-top: 10px;">DESCRIPCIÓN DEL SERVICIO: <span>{{paquete.descripcionPaquete}}</span></h1>
+                    </td>
+                {% endif %}
+            {% endfor %}
+        </tr>
+    </table>
+
+    <br><br><br>
+
+    <table class="tablecustom">
+        <tr>
+            {% for paquete in paquetes %}
+                {% if paquete.numeroPaquete == clients.numeroPaquete %}
+                    <td>
+                        <h1 style="padding-top: 10px;">COSTO DEL SERVICIO: ${{paquete.costoPaquete}}</h1>
+                        <h1 style="padding-bottom: 10px;">ABONO: </h1>
+                    </td>
+                    <td>
+                        <h1 style="padding-top: 10px;">SALDO PENDIENTE: </h1>
+                        <h1 style="padding-bottom: 10px;">FECHA DEL ABONO: </h1>
+                    </td>
+                {% endif %}
+            {% endfor %}
+        </tr>
+    </table>
+
+    <br><br><br>
+
+    <table>
+        <tr>
+            <h1>
+                <span>
+                    En este espacio queremos que como cliente nos haga saber su nivel de satisfacción mediante una pequeña calificación. Donde 1 es la menor calificación y 5 la mejor. (Si tiene alguna observación positiva o negativa, permítase hacerla en la parte posterior de la hoja)
+                </span>
+            </h1>
+            <br>
+            <td>
+                <h1>SERVICIO. __</h1>
+            </td>
+            <td>
+                <h1>ASESORÍA. __</h1>
+            </td>
+            <td>
+                <h1>PUNTUALIDAD. __</h1>
+            </td>
+            <td>
+                <h1>PRESENTACIÓN. __</h1>
+            </td>
+        </tr>
+    </table>
+
+    <br><br><br><br>
+    <h2>_______________________________</h2>
+    <h2>Nombre y firma del cliente</h2>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

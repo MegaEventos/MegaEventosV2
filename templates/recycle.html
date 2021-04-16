@@ -1,0 +1,84 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{%block contenttitle %}
+    <!-- Bread crumb and right sidebar toggle -->
+    <div class="page-breadcrumb">
+        <div class="row">
+            <div class="col-5 align-self-center">
+                <h4 class="page-title">Papelera de reciclaje</h4>
+            </div>
+            <div class="col-7 align-self-center">
+                <div class="d-flex align-items-center justify-content-end">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="#">Home</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">Reciclaje</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+{%endblock contenttitle%}
+
+    <!-- End Bread crumb and right sidebar toggle -->
+
+    <!-- Container fluid  -->
+{%block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Lista de clientes eliminados</h4>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Nombre Homenajead@</th>
+                                    <th scope="col">Celular</th>
+                                    <th scope="col">Barrio / Sector</th>
+                                    <th scope="col">Dirección</th>
+                                    <th scope="col">Fecha Evento</th>
+                                    <th scope="col">Hora Inicio</th>
+                                    <th scope="col">Paquete</th>
+                                    <th scope="col">Niños</th>
+                                    <th scope="col">Edades</th>
+                                    <th scope="col">Restaurar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for client in clients %}
+                                    {% if client.Recycle is True %}
+                                        <tr class="table-info">
+                                            <td>{{client.id}}</td>
+                                            <td>{{client.nombreCliente}}</td>
+                                            <td>{{client.nombreHomenajeado}}</td>
+                                            <td>{{client.celular}}</td>
+                                            <td>{{client.barrioSector}}</td>
+                                            <td>{{client.direccion}}</td>
+                                            <td>{{client.fechaEvento}}</td>
+                                            <td>{{client.horaInicio}}</td>
+                                            <td>{{client.numeroPaquete}}</td>
+                                            <td>{{client.cantidadNinos}}</td>
+                                            <td>{{client.rangoEdad}}</td>
+                                            <td><a href="/oficina/restaurar/{{ client.id }}" onClick="return confirm('¿Seguro que quieres borrar a {{client.nombreCliente}}?');" ><button class="btn btn-success text-white"><i class="fas fa-trash-restore"></i></button></a></td>
+                                        </tr>
+                                    {% endif %}
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{%endblock%}
+            
+<!-- End Container fluid  -->
